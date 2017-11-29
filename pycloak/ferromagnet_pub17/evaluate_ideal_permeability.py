@@ -8,7 +8,7 @@ import pandas as pd
 import sys
 import os
 
-def mean_radius(radfile):
+def mean_from_file(radfile):
     # turn files of tube dimensions into array
     r = np.genfromtxt(radfile)
     a = ufloat(np.mean(r), np.std(r)) #radius value,err
@@ -28,10 +28,10 @@ def calc_mu_cloak( radius_fm_inner, radius_fm_outer):
     return u_cloak
 
 
-
 if __name__ == '__main__':
 
-    setlist="filelist_ferromagnet_mri.txt"
+    #setlist="filelist_ferromagnet_mri.txt"
+    setlist="filelist_ferromagnet_sbu.txt"
     results_file="results/cloak_fm_permeability_ideal.csv"
     
 
@@ -40,7 +40,7 @@ if __name__ == '__main__':
         os.remove(results_file)
 
     # create results dataframe
-    dresults = pd.DataFrame( columns = ["ID","diam_in","diam_out","mu_ideal"] )    
+    dresults = pd.DataFrame( columns = ["ID","diam_in","diam_out","rad_in","rad_out","mu_ideal"] )    
 
     # open input lines
     f = open(setlist, "r")
@@ -55,23 +55,26 @@ if __name__ == '__main__':
 
                 ID = pars[0]
                 frac = pars[1]
-                fname_di=pars[5]
-                fname_do=pars[6]
+                fname_do=pars[5]
+                fname_th=pars[6]
 
                 if (dresults['ID']==ID).any():
                     continue
 
                 # get inner and outer diameter
-                diam_in = mean_radius('diameter_files/'+fname_di)
-                diam_out = mean_radius('diameter_files/'+fname_do)
+                diam_out = mean_from_file('diameter_files/'+fname_do)
+                thickness = mean_from_file('diameter_files/'+fname_th)
+                diam_in = diam_out - 2*thickness
+                rad_in = diam_in / 2.0
+                rad_out = diam_out / 2.0
 
                 # get ideal permeability
-                mu_ideal = calc_mu_cloak( diam_in , diam_out )
+                mu_ideal = calc_mu_cloak( rad_in , rad_out )
 
-                print(ID,diam_in,diam_out,mu_ideal)
+                print(ID,rad_in,rad_out,mu_ideal)
 
                 # append to result
-                d = {'ID': ID, 'diam_in': diam_in, 'diam_out': diam_out, 'mu_ideal': mu_ideal}
+                d = {'ID': ID, 'diam_in': diam_in, 'diam_out': diam_out, 'rad_in': rad_in, 'rad_out': rad_out, 'mu_ideal': mu_ideal}
                 dresults = dresults.append(d, ignore_index=True)
 
     print(dresults)

@@ -1,11 +1,17 @@
 # MagCloak_Analysis
-Analysis code for magnetic cloaking measurements.
+Analysis code for magnetic cloak measurements.
+
+The Python macros that were used for the final analysis and plotting of the measurements (as published in our [article](https://www.sciencedirect.com/science/article/pii/S0168900217310045) in Nuclear Instruments and Methods in Physics Research) are located in the following folders:
+
+* [pycloak/shielding_pub17](pycloak/shielding_pub17)
+* [pycloak/ferromagnet_pub17](pycloak/ferromagnet_pub17)
+* [pycloak/cloaking_pub17](pycloak/cloaking_pub17)
 
 ### How to get the data:
 
-* In parent directory (```cd ..```), check out magcloak-data-calib from GitHub
+* In parent directory (```cd ..```), clone https://github.com/SBU-DetectorRnD/magcloak-data-calib
 
-* If you want to calibrate data yourself, also check out magcloak-data from GitHub
+* If you want to calibrate data yourself, also clone https://github.com/SBU-DetectorRnD/magcloak-data
 
 
 ### How to calibrate data:

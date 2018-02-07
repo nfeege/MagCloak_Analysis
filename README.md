@@ -1,5 +1,6 @@
-# MagCloak_Analysis
-Analysis code for magnetic cloak measurements.
+# A magnetic field cloak for charged particle beams.
+
+This is the analysis code for the EIC Detector R&D project to build and test a magnetic field for charged particle beams.
 
 The Python macros that were used for the final analysis and plotting of the measurements (as published in our [article](https://www.sciencedirect.com/science/article/pii/S0168900217310045) in Nuclear Instruments and Methods in Physics Research) are located in the following folders:
 

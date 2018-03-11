@@ -2,7 +2,7 @@
 
 This is the analysis code for the EIC Detector R&D project to build and test a magnetic field for charged particle beams.
 
-The Python macros that were used for the final analysis and plotting of the measurements (as published in our [article](https://www.sciencedirect.com/science/article/pii/S0168900217310045) in Nuclear Instruments and Methods in Physics Research) are located in the following folders:
+The Python macros that were used for the final analysis and plotting of the measurements (as published in our article in [Nuclear Instruments and Methods in Physics Research](https://www.sciencedirect.com/science/article/pii/S0168900217310045) with open access of the pre-print version through [arXiv](https://arxiv.org/abs/1707.02361)) are located in the following folders:
 
 * [pycloak/shielding_pub17](pycloak/shielding_pub17)
 * [pycloak/ferromagnet_pub17](pycloak/ferromagnet_pub17)
